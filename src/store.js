@@ -8,5 +8,11 @@ import { todos } from './seed.js'
 export default new Vuex.Store({
     state: {
         todos: todos
+    },
+
+    mutations: {
+        addTask: (state, data) => {
+            state.todos.push(data)
+        }
     }
 })

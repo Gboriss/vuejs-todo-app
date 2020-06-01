@@ -20,7 +20,6 @@
 <script>
 import checkbox from "@/components/Checkbox"
 import uiButton from "@/components/uiButton"
-import store  from "../store.js"
 
 export default {
     name: 'todo',

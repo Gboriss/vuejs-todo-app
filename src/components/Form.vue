@@ -1,13 +1,44 @@
 <template>
-<div class="search">
-    <input type="text" id="new-task" placeholder="New item">
-</div>	
+<form class="search" @submit.prevent="addTask">
+    <input 
+        type="text" 
+        id="new-task" 
+        placeholder="New item" 
+        v-model="inputEntry"
+    />
+</form>	
 </template>
 
 
 <script>
+import store  from "../store.js"
+
 export default {
     name: 'uiform',
+   
+    data() {
+        return {
+            inputEntry: '',
+            state: store.state,
+            error: false,
+        }
+    },
+
+    methods: {
+       addTask() {
+            if (this.inputEntry) {
+                this.$store.commit('addTask', {
+                    id: Date.now(),
+                    title: this.inputEntry,
+                    completed: false,
+                    edit: false,
+                })
+                this.inputEntry = ''
+            }
+            console.log(this.state.todos)
+        }
+
+    }
 }
 </script>
 
