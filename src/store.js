@@ -14,7 +14,7 @@ export default new Vuex.Store({
         addTask: (state, data) => {
             state.todos.push(data)
         },
-        
+
         editTodo: (state, id) => {
             let todo = state.todos.find(todo => 
                 (todo.id === id))
@@ -26,7 +26,6 @@ export default new Vuex.Store({
                 (todo.id === id))
 
             state.todos.splice(todo, 1)
-
-        }    
+        },
     }
 })

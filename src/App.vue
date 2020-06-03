@@ -2,8 +2,8 @@
 <div id="app">
 	<header>	
         <h1>todos</h1>
-        <Form/>
     </header>
+    <Form/>
 	<ul>
 		<todo
 			v-for="todo in todos" 
@@ -11,7 +11,14 @@
 			v-bind="todo"
 		/>
 	</ul>
-	<uiFooter/>
+	<footer>
+		<items/>
+		<ul class="filters">
+			<li><a href="#/all">All</a></li>
+			<li><a href="#/active">Active</a></li>
+			<li><a href="#/completed">Completed</a></li>
+		</ul>
+	</footer>
 </div>
 </template>
 
@@ -19,21 +26,16 @@
 <script>
 import Form from "@/components/Form"
 import Todo from "@/components/Todo"
-import uiFooter from "@/components/Footer"
+import items from "@/components/Items"
 
 export default {
 	name: "App",
 	components: {
 		Form,
 		Todo,
-		uiFooter,
+		items,
 	},
-	data() {
-		return {
-			count: 0,
-			message: "Привет"
-		}
-	},
+
 	created() {
 		console.log('im created')
 	},
@@ -46,13 +48,6 @@ export default {
 		}
 	},
 	computed: {
-		powCount() {
-			return this.count ** 2
-		},
-		 reversedMessage: function () {
-      		// `this` указывает на экземпляр vm
-      		return this.message.split('').reverse().join('')
-		},
 		
 		todos() {
 			return this.$store.state.todos
@@ -68,42 +63,56 @@ export default {
 
 body {
 	display: flex;
-	background-color: #f5f5f5;
+	background: linear-gradient(to right, #F49056, #F67F80);
+
 }
 #app {
-display: flex;
-flex-direction: column;
-width: 100%;
-max-width: 500px;
-margin: 100px auto;
-background-color: #FFF;
-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
-			0 25px 50px 0 rgba(0, 0, 0, 0.1);
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	max-width: 500px;
+	margin: 100px auto;
 }
 
-header {    
-        position: relative;
-        width: 100%;
-        max-width: 500px;
-        
-        font-size: 21px;
-        color: #000;
-        background-color: #FFF;
-        border-bottom: 1px solid #f6f6f6;
-        user-select: none;
-        box-sizing: border-box;
+h1 {
+	font-size: 100px;
+	text-align: center;
+	color: rgba(175, 47, 47, 0.15);
+	font-weight: 400;
+	text-transform: uppercase;
+}
 
-        h2 {
-            position: absolute;
-            top: -100px;
-            width: 100%;
-            font-size: 100px;
-            font-weight: 100;
-            text-align: center;
-            color: rgba(175, 47, 47, 0.15);
-            font-weight: 400;
-            text-transform: uppercase;
-        }
-    }
+footer {
+	display: flex;
+	justify-content: space-between;
+    align-items: center;
 
+	background-color: #f1e9dc61;
+	color: #777;
+	padding: 10px 15px;
+	height: 20px;
+	text-align: center;
+}
+.filters {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	li {
+		display: inline;
+		a {
+			color: inherit;
+			margin: 3px;
+			padding: 3px 7px;
+			text-decoration: none;
+			border-radius: 3px;
+			&:focus {
+				border: 1px solid;
+			}
+			&:hover {
+				color: #736246;
+;
+			}
+		}
+	}
+}
 </style>

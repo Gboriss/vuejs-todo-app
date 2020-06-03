@@ -43,35 +43,29 @@ export default {
 
 
 <style lang="scss" scoped>
-input  {
+form {
+    position: relative;
+    margin: 20px 0;
+    -webkit-box-shadow: 1px 3px 10px rgba(17,17,17,0.5);
+    box-shadow: 1px 3px 10px rgba(17,17,17,0.5);
+    -webkit-animation: fade-in 0.4s forwards;
+    animation: fade-in 0.4s forwards;
+}
+input {
+    
     position: relative;
     width: 100%;
     font-size: 24px;
     line-height: 1.4em;
-    
+    color: #736246;
     padding: 16px 16px 16px 60px;
-    background: rgba(0, 0, 0, 0.003);
+	background-color: #F1E9DC;
     box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
     box-sizing: border-box;
     &::placeholder {
         font-style: italic;
         font-weight: 300;
-        color: #e6e6e6;
-    }
-
-    &::before {
-        content: '❯';
-        font-size: 22px;
-        width: 30px;
-        height: 30px;
-        color: #e6e6e6;
-        padding: 10px 27px 10px 27px;
-    
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0; 
+		color: rgba(175, 47, 47, 0.15);
     }
 }
 </style>

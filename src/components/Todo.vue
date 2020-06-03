@@ -53,28 +53,26 @@ export default {
 <style lang="scss" scoped>
 li {
     display: flex;
-    font-size: 24px;
-    border-bottom: 1px solid #ededed;
+    align-items: center;
+    background-color: #F1E9DC;
     padding: 12px 0;
-
-    &:last-child {
-        border-bottom: none;
-    }
+    margin: 5px 0;
+    font-size: 24px;
+    color: #736246;
 
     .edit {
         position: relative;
         margin: 0;
-        margin-left: 20px;
+        margin-left: 24px;
         width: 80%;
         font-size: 24px;
         font-family: inherit;
         font-weight: inherit;
-        // line-height: 1.4em;
         border: 0;
         color: inherit;
-        // padding: 6px;
-        border: 1px solid #999;
-        box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+        padding: 6px;
+        border-bottom: 1px solid #999;
+        // box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
         box-sizing: border-box;
     }
     .edit {
@@ -82,22 +80,25 @@ li {
     }
 }
 
+li:last-child {
+    margin: 0;
+}
+
 label {
     word-break: break-all;
     padding-left: 28px;
     line-height: 1.2;
-    transition: color 0.4s;
+    transition: color 0.3s;
 }
 
  li.completed label {
-    color: #d9d9d9;
+    color: #BFB9AE;
     text-decoration: line-through;
 }
 
 button {
     // display: none;
     display: block;
-
 	width: 40px;
 	height: 40px;
 	margin-left: auto;
