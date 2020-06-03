@@ -1,37 +1,34 @@
 <template>
 <div id="app">
-	<uiheader/>
-	<todo/>
-	<ifooter/>
-	<!-- <img alt="Vue logo" src="./assets/logo.png" @click="increment" /> -->
-	<!-- <p>{{ count }}</p>
-	<h1>{{ powCount }}</h1>
-	<p>{{ message }}</p>
-	<p>{{ reversedMessage }}</p> -->
-	<!-- <div v-bind:class="{ active: isActive }"></div> -->
-	<!-- <hello-world :msg="'Welcome to Your Vue.js App'" /> -->
-	<!-- <ui-button/>
-	<button>fgfhfg</button> -->
+	<header>	
+        <h1>todos</h1>
+        <Form/>
+    </header>
+	<ul>
+		<todo
+			v-for="todo in todos" 
+			:key="todo.id"
+			v-bind="todo"
+		/>
+	</ul>
+	<uiFooter/>
 </div>
 </template>
 
 
 <script>
-import checkbox from "@/components/Checkbox"
-import form from "@/components/Form"
-import uiheader from "@/components/Header"
-import todo from "@/components/Todo"
-import ifooter from "@/components/Footer"
+import Form from "@/components/Form"
+import Todo from "@/components/Todo"
+import uiFooter from "@/components/Footer"
 
 export default {
 	name: "App",
 	components: {
-		// HelloWorld,
-		uiheader,
-		todo,
-		ifooter,
+		Form,
+		Todo,
+		uiFooter,
 	},
-	data: function() {
+	data() {
 		return {
 			count: 0,
 			message: "Привет"
@@ -55,7 +52,11 @@ export default {
 		 reversedMessage: function () {
       		// `this` указывает на экземпляр vm
       		return this.message.split('').reverse().join('')
-    	},
+		},
+		
+		todos() {
+			return this.$store.state.todos
+		}
 	},
 }
 </script>
@@ -79,5 +80,30 @@ background-color: #FFF;
 box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
 			0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
+
+header {    
+        position: relative;
+        width: 100%;
+        max-width: 500px;
+        
+        font-size: 21px;
+        color: #000;
+        background-color: #FFF;
+        border-bottom: 1px solid #f6f6f6;
+        user-select: none;
+        box-sizing: border-box;
+
+        h2 {
+            position: absolute;
+            top: -100px;
+            width: 100%;
+            font-size: 100px;
+            font-weight: 100;
+            text-align: center;
+            color: rgba(175, 47, 47, 0.15);
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+    }
 
 </style>

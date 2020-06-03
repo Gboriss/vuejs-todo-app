@@ -5,21 +5,21 @@
         id="new-task" 
         placeholder="New item" 
         v-model="inputEntry"
+        autocomplete="off"
     />
 </form>	
 </template>
 
 
 <script>
-import store  from "../store.js"
+
 
 export default {
-    name: 'uiform',
+    name: 'Form',
    
     data() {
         return {
             inputEntry: '',
-            state: store.state,
             error: false,
         }
     },
@@ -35,7 +35,6 @@ export default {
                 })
                 this.inputEntry = ''
             }
-            console.log(this.state.todos)
         }
 
     }

@@ -15,7 +15,7 @@
 
 <script>
 export default {
-    name: 'ifooter',
+    name: 'uiFooter',
 }
 </script>
 

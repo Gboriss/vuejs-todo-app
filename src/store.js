@@ -13,6 +13,20 @@ export default new Vuex.Store({
     mutations: {
         addTask: (state, data) => {
             state.todos.push(data)
-        }
+        },
+        
+        editTodo: (state, id) => {
+            let todo = state.todos.find(todo => 
+                (todo.id === id))
+            todo.edit = true
+        },
+
+        remove: (state, id) => {
+            let todo = state.todos.find(todo => 
+                (todo.id === id))
+
+            state.todos.splice(todo, 1)
+
+        }    
     }
 })

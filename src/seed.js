@@ -2,18 +2,18 @@ export const todos = [
     {
         id: 1,
         title: 'may',
-        completed: true,
-        edit: false
+        completed: false,
+        edit: false,
     },
     {
         id: 2,
-        title: 'fgdfgdfg',
+        title: 'мышкины ушки',
         completed: true,
         edit: false
     },
     {
         id: 3,
-        title: 'mddddday',
+        title: 'кошкины лапки',
         completed: false,
         edit: false
     }
