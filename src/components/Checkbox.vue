@@ -35,6 +35,7 @@ export default {
 <style lang="scss" scoped>
 
 input {
+	flex-shrink: 0;
     text-align: center;
     width: 25px;
 	height: 25px;

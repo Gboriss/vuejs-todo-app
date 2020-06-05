@@ -4,7 +4,7 @@
         type="text" 
         id="new-task" 
         placeholder="New item" 
-        v-model="inputEntry"
+        v-model.trim="inputEntry"
         autocomplete="off"
     />
 </form>	

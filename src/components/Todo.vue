@@ -2,7 +2,7 @@
 <li
 	:class="{completed}"
 >
-	<checkbox v-model="completed"/>
+	<checkbox :value="completed" @click.native="check"/>
 	<label 
 		v-if="!edit"
 		@dblclick="editTodo"
@@ -45,6 +45,9 @@ export default {
         },
         remove() {
             this.$store.commit('remove', this.id)
+        },
+        check() {
+            this.$store.commit('check', this.id)
         }
     }
 }

@@ -27,5 +27,11 @@ export default new Vuex.Store({
 
             state.todos.splice(todo, 1)
         },
+
+        check: (state, id) => {
+            let todo = state.todos.find(todo => 
+                (todo.id === id))
+            todo.completed = !todo.completed
+        }
     }
 })

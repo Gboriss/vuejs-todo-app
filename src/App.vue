@@ -12,12 +12,19 @@
 		/>
 	</ul>
 	<footer>
-		<items/>
-		<ul class="filters">
-			<li><a href="#/all">All</a></li>
-			<li><a href="#/active">Active</a></li>
-			<li><a href="#/completed">Completed</a></li>
-		</ul>
+		<span class="todo-count">
+    		Items: {{ todos.length }}
+		</span>
+		<div class="filter">
+			<button
+				v-for="name in filters"
+				:key="name"
+				@click="select(name)"
+				:class="{ active: filter === name }"
+			> 
+				{{ name }}
+			</button>
+		</div>
 	</footer>
 </div>
 </template>
@@ -26,31 +33,32 @@
 <script>
 import Form from "@/components/Form"
 import Todo from "@/components/Todo"
-import items from "@/components/Items"
 
 export default {
 	name: "App",
 	components: {
 		Form,
 		Todo,
-		items,
 	},
-
-	created() {
-		console.log('im created')
-	},
-	mounted() {
-		console.log('im mounted')
-	},
+	data: () => ({
+		filter: 'all',
+		filters: ['all', 'active', 'completed']
+	}),
 	methods: {
-		increment() {
-			this.count++;
+		select(name) {
+			this.filter = name
 		}
 	},
 	computed: {
-		
 		todos() {
-			return this.$store.state.todos
+			switch (this.filter) {
+				case 'active':
+					return this.$store.state.todos.filter(todo => !todo.completed)
+				case 'completed':
+					return this.$store.state.todos.filter(todo => todo.completed)
+				default:
+					return this.$store.state.todos
+			}
 		}
 	},
 }
@@ -93,25 +101,18 @@ footer {
 	height: 20px;
 	text-align: center;
 }
-.filters {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	li {
-		display: inline;
-		a {
-			color: inherit;
-			margin: 3px;
-			padding: 3px 7px;
-			text-decoration: none;
-			border-radius: 3px;
-			&:focus {
-				border: 1px solid;
-			}
-			&:hover {
-				color: #736246;
-;
-			}
+.filter {
+	button {
+		color: inherit;
+		margin: 3px;
+		padding: 3px 7px;
+		text-decoration: none;
+		border-radius: 3px;
+		&.active {
+			border: 1px solid;
+		}
+		&:hover {
+			color: #736246;		
 		}
 	}
 }
