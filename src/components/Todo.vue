@@ -4,8 +4,8 @@
 >
 	<checkbox :value="completed" @click.native="check"/>
 	<label 
-		v-if="!edit"
-		@dblclick="editTodo"
+		v-if="locked"
+		@dblclick="locked = false"
 	>
 		{{ title }}
 	</label>
@@ -13,7 +13,8 @@
 		v-else
 		class="edit" 
 		type="text"
-        v-model="title"
+        v-model="content"
+        @keyup.enter="update(content)"
 	>
 	<button
         class="destroy"
@@ -24,28 +25,40 @@
 
 <script>
 import checkbox from "@/components/Checkbox"
-
 export default {
 	name: 'todo',
-
 	props: ['id', 'title', 'edit', 'completed'],
-
     components: {
         checkbox,
-	},
+    },
+    
+    data() {
+        return {
+            content: this.title,
+            locked: true,
+        }
+    },
 	
 	computed: {
 		todos() {
-			return this.$store.state.todos
-		}
+            return this.$store.state.todos     
+        }     
     },
     methods: {
+        
         editTodo() {
-			this.$store.commit('editTodo', this.id)
+            this.$store.commit('editTodo', this.id)
         },
+
+        update(content) {
+            this.$store.commit('update', { id: this.id, content })
+            this.locked = true
+        },
+
         remove() {
             this.$store.commit('remove', this.id)
         },
+        
         check() {
             this.$store.commit('check', this.id)
         }
@@ -62,7 +75,6 @@ li {
     margin: 5px 0;
     font-size: 24px;
     color: #736246;
-
     .edit {
         position: relative;
         margin: 0;
@@ -82,23 +94,19 @@ li {
         display: block;
     }
 }
-
 li:last-child {
     margin: 0;
 }
-
 label {
     word-break: break-all;
     padding-left: 28px;
     line-height: 1.2;
     transition: color 0.3s;
 }
-
  li.completed label {
     color: #BFB9AE;
     text-decoration: line-through;
 }
-
 button {
     // display: none;
     display: block;
@@ -115,5 +123,4 @@ button {
 	content: '×';
     }
 }
-
 </style>

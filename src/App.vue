@@ -33,7 +33,6 @@
 <script>
 import Form from "@/components/Form"
 import Todo from "@/components/Todo"
-
 export default {
 	name: "App",
 	components: {
@@ -68,11 +67,9 @@ export default {
 <style lang="scss">
 @import './styles/reset.css';
 @import './styles/fonts.css';
-
 body {
 	display: flex;
 	background: linear-gradient(to right, #F49056, #F67F80);
-
 }
 #app {
 	display: flex;
@@ -81,7 +78,6 @@ body {
 	max-width: 500px;
 	margin: 100px auto;
 }
-
 h1 {
 	font-size: 100px;
 	text-align: center;
@@ -89,12 +85,10 @@ h1 {
 	font-weight: 400;
 	text-transform: uppercase;
 }
-
 footer {
 	display: flex;
 	justify-content: space-between;
     align-items: center;
-
 	background-color: #f1e9dc61;
 	color: #777;
 	padding: 10px 15px;
