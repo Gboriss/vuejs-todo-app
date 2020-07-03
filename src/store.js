@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-// import localData from './modules/localData.js'
+import localData from './modules/localData.js'
 
 Vue.use(Vuex)
 
@@ -9,7 +9,7 @@ import { todos } from './seed.js'
 
 export default new Vuex.Store({
     state: {
-        todos,
+        todos: localData().get(),
         newEvent: ''
     },
 
@@ -17,7 +17,8 @@ export default new Vuex.Store({
 
         addTask: (state, data) => {
             state.todos.push(data)
-            localStorage.setItem('todos', JSON.stringify(state.todos))
+            localData().set(state.todos)
+            // localStorage.setItem('todos', JSON.stringify(state.todos))
         },
 
         // editTodo: (state, id) => {
@@ -33,7 +34,8 @@ export default new Vuex.Store({
                 (todo.id === id))
         
             todo.title = content
-            localStorage.setItem('todos', JSON.stringify(state.todos))
+            localData().set(state.todos)
+            // localStorage.setItem('todos', JSON.stringify(state.todos))
         },
  
         remove: (state, id) => {
@@ -44,15 +46,16 @@ export default new Vuex.Store({
                     ...state.todos.slice(0, todo),
                     ...state.todos.slice(todo + 1)
                 ]
-
-                localStorage.setItem('todos', JSON.stringify(state.todos))
+                localData().set(state.todos)
+                // localStorage.setItem('todos', JSON.stringify(state.todos))
         },
 
         check: (state, id) => {
             let todo = state.todos.find(todo => 
                 (todo.id === id))
             todo.completed = !todo.completed
-            localStorage.setItem('todos', JSON.stringify(state.todos))
+            localData().set(state.todos)
+            // localStorage.setItem('todos', JSON.stringify(state.todos))
         }
     },
 

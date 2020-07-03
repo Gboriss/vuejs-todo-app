@@ -1,19 +1,18 @@
-# vue_todo
+# [vuejs-todo-app](https://gboriss.github.io/-vuejs-todo-app/)
+### Todo app on vue.js 
 
-## Project setup
-```
-yarn install
-```
+* [Vue.js](https://vuejs.org/)
+* [Vuex](https://vuex.vuejs.org/)
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+![vuejs-todo-app screenshot](https://i.ibb.co/qp9Wh9b/todo.png)
 
-### Compiles and minifies for production
-```
-yarn build
-```
+[DEMO](https://gboriss.github.io/-vuejs-todo-app/)
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Todo
+- [x] templates
+- [x] styles
+- [x] methods (add, delete, edit, toggle complete)
+- [x] filters ('all', 'active', 'completed')
+- [x] vuex store
+- [x] localStorage saving
